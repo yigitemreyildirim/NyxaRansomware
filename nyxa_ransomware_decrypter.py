@@ -20,7 +20,7 @@ for file in files:
     with open(file, "rb") as ransom_file_read:
         contents = ransom_file_read.read()
 
-    contents_decrypted = Fernet(key).decrypt(contents)
+    contents_decrypted = Fernet(ransom.key).decrypt(contents)
 
     with open(file, "wb") as ransom_file_write:
         ransom_file_write.write(contents_decrypted)
