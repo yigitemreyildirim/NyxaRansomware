@@ -1,4 +1,5 @@
 import os
+from cryptography.fernet import Fernet as fernet
 
 files = []
 
@@ -11,3 +12,4 @@ for file in os.listdir():
 
     files.append(file)
 
+key = Fernet.generate_key()
